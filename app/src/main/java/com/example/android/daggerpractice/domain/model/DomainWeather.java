@@ -2,7 +2,7 @@ package com.example.android.daggerpractice.domain.model;
 
 import java.util.Objects;
 
-public class Weather {
+public class DomainWeather {
     private String city;
     private long epoch;
     private String date;
@@ -89,16 +89,16 @@ public class Weather {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Weather weather = (Weather) o;
-        return epoch == weather.epoch &&
-                Double.compare(weather.maxTemp, maxTemp) == 0 &&
-                Double.compare(weather.minTemp, minTemp) == 0 &&
-                Double.compare(weather.maxWind, maxWind) == 0 &&
-                Double.compare(weather.avgHumidity, avgHumidity) == 0 &&
-                Objects.equals(city, weather.city) &&
-                Objects.equals(date, weather.date) &&
-                Objects.equals(text, weather.text) &&
-                Objects.equals(iconUrl, weather.iconUrl);
+        DomainWeather domainWeather = (DomainWeather) o;
+        return epoch == domainWeather.epoch &&
+                Double.compare(domainWeather.maxTemp, maxTemp) == 0 &&
+                Double.compare(domainWeather.minTemp, minTemp) == 0 &&
+                Double.compare(domainWeather.maxWind, maxWind) == 0 &&
+                Double.compare(domainWeather.avgHumidity, avgHumidity) == 0 &&
+                Objects.equals(city, domainWeather.city) &&
+                Objects.equals(date, domainWeather.date) &&
+                Objects.equals(text, domainWeather.text) &&
+                Objects.equals(iconUrl, domainWeather.iconUrl);
     }
 
     @Override

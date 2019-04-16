@@ -6,13 +6,13 @@ import java.util.List;
 
 public class WeatherList {
     @SerializedName("forecastday")
-    private List<Weather> items;
+    private List<RemoteWeather> items;
 
-    public List<Weather> getItems() {
+    public List<RemoteWeather> getItems() {
         return items;
     }
 
-    public void setItems(List<Weather> items) {
+    public void setItems(List<RemoteWeather> items) {
         this.items = items;
     }
 }

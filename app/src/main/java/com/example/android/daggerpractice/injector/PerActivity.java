@@ -1,4 +1,4 @@
-package com.example.android.daggerpractice.presentation.injector;
+package com.example.android.daggerpractice.injector;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

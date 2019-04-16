@@ -2,7 +2,7 @@ package com.example.android.daggerpractice.domain.model;
 
 import java.util.Objects;
 
-public class SharedPref {
+public class DomainSharedPref {
     private String city;
     private int days;
 
@@ -26,7 +26,7 @@ public class SharedPref {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SharedPref that = (SharedPref) o;
+        DomainSharedPref that = (DomainSharedPref) o;
         return days == that.days &&
                 Objects.equals(city, that.city);
     }

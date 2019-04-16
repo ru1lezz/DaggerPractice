@@ -1,4 +1,4 @@
-<resources>
+<mResources>
     <string name="app_name">Dagger Practice</string>
     <string name="load">Загрузить</string>
     <string name="city">Город</string>
@@ -6,4 +6,4 @@
     <string name="humidity">Влажность</string>
     <string name="description">Description</string>
     <string name="date">Date</string>
-</resources>
+</mResources>

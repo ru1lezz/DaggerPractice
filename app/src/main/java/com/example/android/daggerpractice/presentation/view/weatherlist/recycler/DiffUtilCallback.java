@@ -1,16 +1,16 @@
-package com.example.android.daggerpractice.presentation.view.weatherlist;
+package com.example.android.daggerpractice.presentation.view.weatherlist.recycler;
 
 import android.support.v7.util.DiffUtil;
 
-import com.example.android.daggerpractice.presentation.view.model.WeatherUIModel;
+import com.example.android.daggerpractice.presentation.view.model.Weather;
 
 import java.util.List;
 
 public class DiffUtilCallback extends DiffUtil.Callback {
-    private final List<WeatherUIModel> oldList;
-    private final List<WeatherUIModel> newList;
+    private final List<Weather> oldList;
+    private final List<Weather> newList;
 
-    public DiffUtilCallback(List<WeatherUIModel> oldList, List<WeatherUIModel> newList) {
+    public DiffUtilCallback(List<Weather> oldList, List<Weather> newList) {
         this.oldList = oldList;
         this.newList = newList;
     }

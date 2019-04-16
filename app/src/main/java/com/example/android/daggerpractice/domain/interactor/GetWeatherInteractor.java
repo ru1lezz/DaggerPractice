@@ -1,20 +1,29 @@
 package com.example.android.daggerpractice.domain.interactor;
 
 import com.example.android.daggerpractice.domain.WeatherRepository;
-import com.example.android.daggerpractice.domain.model.Weather;
+import com.example.android.daggerpractice.domain.model.DomainWeather;
+
+import javax.inject.Inject;
 
 public class GetWeatherInteractor {
-    private final String city;
-    private final long epoch;
+    private String city;
+    private long epoch;
     private final WeatherRepository mRepository;
 
-    public GetWeatherInteractor(String city, long epoch, WeatherRepository mRepository) {
-        this.city = city;
-        this.epoch = epoch;
-        this.mRepository = mRepository;
+    @Inject
+    public GetWeatherInteractor(WeatherRepository repository) {
+        mRepository = repository;
     }
 
-    public Weather execute() {
+    public DomainWeather execute() {
         return mRepository.getWeatherLocal(city, epoch);
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setEpoch(long epoch) {
+        this.epoch = epoch;
     }
 }

@@ -11,17 +11,23 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.android.daggerpractice.R;
-import com.example.android.daggerpractice.data.repository.WeatherRepositoryImpl;
+import com.example.android.daggerpractice.injector.component.ApplicationComponent;
+import com.example.android.daggerpractice.injector.component.DaggerWeatherComponent;
+import com.example.android.daggerpractice.injector.module.ActivityModule;
+import com.example.android.daggerpractice.injector.module.SharefPrefModule;
+import com.example.android.daggerpractice.injector.module.WeatherModule;
+import com.example.android.daggerpractice.presentation.WeatherApplication;
 import com.example.android.daggerpractice.presentation.presenter.weather.WeatherPresenter;
 
-import java.util.concurrent.Executors;
+import javax.inject.Inject;
 
 public class DetailedWeatherActivity extends AppCompatActivity implements DetailedWeatherView{
 
     private static final String WEATHER_CITY = "weather_city";
     private static final String WEATHER_EPOCH = "weather_epoch";
 
-    private WeatherPresenter mPresenter;
+    @Inject
+    WeatherPresenter mPresenter;
 
     private TextView mHighTemperatureTextView;
     private TextView mLowTemperatureTextView;
@@ -36,19 +42,8 @@ public class DetailedWeatherActivity extends AppCompatActivity implements Detail
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed_weather);
         initViews();
-        Bundle bundle = getIntent().getExtras();
-        if(bundle != null) {
-            if(bundle.containsKey(WEATHER_CITY) && bundle.containsKey(WEATHER_EPOCH)) {
-                mPresenter = new WeatherPresenter(
-                        Executors.newSingleThreadExecutor(),
-                        new Handler(Looper.getMainLooper()),
-                        this,
-                        new WeatherRepositoryImpl(getApplicationContext()),
-                        bundle.getString(WEATHER_CITY),
-                        bundle.getLong(WEATHER_EPOCH)
-                );
-            }
-        }
+        initInjector(getApplicationComponent());
+        initPresenter();
     }
 
     private void initViews() {
@@ -61,10 +56,44 @@ public class DetailedWeatherActivity extends AppCompatActivity implements Detail
         mIcon = findViewById(R.id.weather_icon);
     }
 
+    private void initPresenter() {
+        mPresenter.setView(DetailedWeatherActivity.this);
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null) {
+            if(bundle.containsKey(WEATHER_CITY) && bundle.containsKey(WEATHER_EPOCH)) {
+                mPresenter.setCity(bundle.getString(WEATHER_CITY));
+                mPresenter.setEpoch(bundle.getLong(WEATHER_EPOCH));
+            }
+        }
+        mPresenter.onCreate();
+    }
+
+    private ApplicationComponent getApplicationComponent() {
+        return ((WeatherApplication) getApplication()).getApplicationComponent();
+    }
+
+    private void initInjector(ApplicationComponent applicationComponent) {
+        applicationComponent.inject(this);
+        DaggerWeatherComponent.builder()
+                .applicationComponent(applicationComponent)
+                .activityModule(new ActivityModule(this))
+                .weatherModule(new WeatherModule())
+                .sharefPrefModule(new SharefPrefModule())
+                .build()
+                .inject(this);
+    }
+
+
     @Override
     protected void onResume() {
         super.onResume();
         mPresenter.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mPresenter.onDestroy();
     }
 
     public static Intent newIntent(Context context, String city, long epoch) {

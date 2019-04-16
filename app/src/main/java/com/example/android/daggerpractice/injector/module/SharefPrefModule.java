@@ -1,8 +1,8 @@
-package com.example.android.daggerpractice.presentation.injector.module;
+package com.example.android.daggerpractice.injector.module;
 
 import com.example.android.daggerpractice.domain.interactor.GetSharedPrefInteractor;
 import com.example.android.daggerpractice.domain.interactor.SetSharedPrefInteractor;
-import com.example.android.daggerpractice.presentation.injector.PerActivity;
+import com.example.android.daggerpractice.injector.PerActivity;
 
 import dagger.Module;
 import dagger.Provides;

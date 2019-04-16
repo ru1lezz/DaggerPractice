@@ -1,9 +1,9 @@
 package com.example.android.daggerpractice.domain;
 
-import com.example.android.daggerpractice.domain.model.SharedPref;
+import com.example.android.daggerpractice.domain.model.DomainSharedPref;
 
 public interface SharedPrefRepository {
-    SharedPref getSharedPref();
+    DomainSharedPref getSharedPref();
 
-    void setSharedPref(SharedPref sharedPref);
+    void setSharedPref(DomainSharedPref domainSharedPref);
 }

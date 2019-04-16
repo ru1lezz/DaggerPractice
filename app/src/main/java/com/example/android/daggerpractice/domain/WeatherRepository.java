@@ -1,10 +1,10 @@
 package com.example.android.daggerpractice.domain;
 
-import com.example.android.daggerpractice.domain.model.Weather;
+import com.example.android.daggerpractice.domain.model.DomainWeather;
 
 import java.util.List;
 
 public interface WeatherRepository {
-    List<Weather> getRemoteWeatherList(String city, String days);
-    Weather getWeatherLocal(String city, long epoch);
+    List<DomainWeather> getRemoteWeatherList(String city, String days);
+    DomainWeather getWeatherLocal(String city, long epoch);
 }

@@ -2,9 +2,9 @@ package com.example.android.daggerpractice.presentation;
 
 import android.app.Application;
 
-import com.example.android.daggerpractice.presentation.injector.component.ApplicationComponent;
-import com.example.android.daggerpractice.presentation.injector.component.DaggerApplicationComponent;
-import com.example.android.daggerpractice.presentation.injector.module.ApplicationModule;
+import com.example.android.daggerpractice.injector.component.ApplicationComponent;
+import com.example.android.daggerpractice.injector.component.DaggerApplicationComponent;
+import com.example.android.daggerpractice.injector.module.ApplicationModule;
 
 public class WeatherApplication extends Application {
 

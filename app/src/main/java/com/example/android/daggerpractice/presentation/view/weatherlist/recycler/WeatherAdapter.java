@@ -1,6 +1,5 @@
-package com.example.android.daggerpractice.presentation.view.weatherlist;
+package com.example.android.daggerpractice.presentation.view.weatherlist.recycler;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
@@ -9,22 +8,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.android.daggerpractice.R;
-import com.example.android.daggerpractice.presentation.view.model.WeatherUIModel;
+import com.example.android.daggerpractice.presentation.view.model.Weather;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class WeatherAdapter extends RecyclerView.Adapter<WeatherViewHolder> {
 
-    private final Context mContext;
-    private List<WeatherUIModel> mWeatherList;
+    private List<Weather> mWeatherList;
 
-    public WeatherAdapter(Context context) {
-        mContext = context;
+    public WeatherAdapter() {
         mWeatherList = new ArrayList<>();
     }
 
-    public void setmWeatherList(List<WeatherUIModel> weatherList) {
+    public void setWeatherList(List<Weather> weatherList) {
         DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new DiffUtilCallback(mWeatherList, weatherList));
         diffResult.dispatchUpdatesTo(this);
         mWeatherList.clear();
@@ -34,7 +31,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherViewHolder> {
     @NonNull
     @Override
     public WeatherViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.weather_list_item, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.weather_list_item, viewGroup, false);
         return new WeatherViewHolder(view);
     }
 

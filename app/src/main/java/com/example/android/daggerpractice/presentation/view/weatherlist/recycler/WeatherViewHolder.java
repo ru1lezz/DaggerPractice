@@ -1,4 +1,4 @@
-package com.example.android.daggerpractice.presentation.view.weatherlist;
+package com.example.android.daggerpractice.presentation.view.weatherlist.recycler;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.android.daggerpractice.R;
 import com.example.android.daggerpractice.presentation.view.detailedweather.DetailedWeatherActivity;
-import com.example.android.daggerpractice.presentation.view.model.WeatherUIModel;
+import com.example.android.daggerpractice.presentation.view.model.Weather;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,7 +18,7 @@ import java.util.Date;
 public class WeatherViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     private ImageView imageView;
     private TextView mWeatherDate, mMaxTemperature, mLowTemperature, mWeatherDescription;
-    private WeatherUIModel mWeather;
+    private Weather mWeather;
 
     public WeatherViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -34,7 +34,7 @@ public class WeatherViewHolder extends RecyclerView.ViewHolder implements View.O
         imageView = itemView.findViewById(R.id.weather_icon);
     }
 
-    public void bind(WeatherUIModel weather) {
+    public void bind(Weather weather) {
         mWeather = weather;
         SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM");
         mMaxTemperature.setText(String.valueOf(mWeather.getMaxTemp()));

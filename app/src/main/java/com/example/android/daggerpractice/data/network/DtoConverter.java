@@ -1,10 +1,10 @@
 package com.example.android.daggerpractice.data.network;
 
 import com.example.android.daggerpractice.data.WeatherDto;
-import com.example.android.daggerpractice.data.network.model.Weather;
+import com.example.android.daggerpractice.data.network.model.RemoteWeather;
 import com.example.android.daggerpractice.domain.Converter;
 
-public class DtoConverter extends Converter<Weather, WeatherDto> {
+public class DtoConverter extends Converter<RemoteWeather, WeatherDto> {
     private final String city;
 
     public DtoConverter(String city) {
@@ -12,7 +12,7 @@ public class DtoConverter extends Converter<Weather, WeatherDto> {
     }
 
     @Override
-    public WeatherDto convertTo(Weather from) {
+    public WeatherDto convertTo(RemoteWeather from) {
         WeatherDto to = new WeatherDto();
         to.setCity(city);
         to.setEpoch(from.getEpoch());
@@ -27,7 +27,7 @@ public class DtoConverter extends Converter<Weather, WeatherDto> {
     }
 
     @Override
-    public Weather convertFrom(WeatherDto to) {
+    public RemoteWeather convertFrom(WeatherDto to) {
         return null;
     }
 }

@@ -2,8 +2,7 @@ package com.example.android.daggerpractice.presentation.view.model;
 
 import java.util.Objects;
 
-public class WeatherUIModel {
-    private String city;
+public class DetailedWeather {
     private long epoch;
     private String date;
     private double minTemp;
@@ -12,14 +11,6 @@ public class WeatherUIModel {
     private String text;
     private double maxWind;
     private double avgHumidity;
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
 
     public long getEpoch() {
         return epoch;
@@ -89,13 +80,12 @@ public class WeatherUIModel {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        WeatherUIModel that = (WeatherUIModel) o;
+        DetailedWeather that = (DetailedWeather) o;
         return epoch == that.epoch &&
                 Double.compare(that.minTemp, minTemp) == 0 &&
                 Double.compare(that.maxTemp, maxTemp) == 0 &&
                 Double.compare(that.maxWind, maxWind) == 0 &&
                 Double.compare(that.avgHumidity, avgHumidity) == 0 &&
-                Objects.equals(city, that.city) &&
                 Objects.equals(date, that.date) &&
                 Objects.equals(urlIcon, that.urlIcon) &&
                 Objects.equals(text, that.text);
@@ -103,6 +93,6 @@ public class WeatherUIModel {
 
     @Override
     public int hashCode() {
-        return Objects.hash(city, epoch, date, minTemp, maxTemp, urlIcon, text, maxWind, avgHumidity);
+        return Objects.hash(epoch, date, minTemp, maxTemp, urlIcon, text, maxWind, avgHumidity);
     }
 }

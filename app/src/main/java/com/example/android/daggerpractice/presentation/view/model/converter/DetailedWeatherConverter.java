@@ -1,26 +1,26 @@
 package com.example.android.daggerpractice.presentation.view.model.converter;
 
 import com.example.android.daggerpractice.domain.Converter;
-import com.example.android.daggerpractice.domain.model.Weather;
-import com.example.android.daggerpractice.presentation.view.model.DetailedWeatherUIModel;
+import com.example.android.daggerpractice.domain.model.DomainWeather;
+import com.example.android.daggerpractice.presentation.view.model.DetailedWeather;
 
-public class DetailedWeatherConverter extends Converter<Weather, DetailedWeatherUIModel> {
+public class DetailedWeatherConverter extends Converter<DomainWeather, DetailedWeather> {
     @Override
-    public DetailedWeatherUIModel convertTo(Weather weather) {
-        DetailedWeatherUIModel to = new DetailedWeatherUIModel();
-        to.setAvgHumidity(weather.getAvgHumidity());
-        to.setDate(weather.getDate());
-        to.setEpoch(weather.getEpoch());
-        to.setMaxTemp(weather.getMaxTemp());
-        to.setMaxWind(weather.getMaxWind());
-        to.setMinTemp(weather.getMinTemp());
-        to.setText(weather.getText());
-        to.setUrlIcon(weather.getIconUrl());
+    public DetailedWeather convertTo(DomainWeather domainWeather) {
+        DetailedWeather to = new DetailedWeather();
+        to.setAvgHumidity(domainWeather.getAvgHumidity());
+        to.setDate(domainWeather.getDate());
+        to.setEpoch(domainWeather.getEpoch());
+        to.setMaxTemp(domainWeather.getMaxTemp());
+        to.setMaxWind(domainWeather.getMaxWind());
+        to.setMinTemp(domainWeather.getMinTemp());
+        to.setText(domainWeather.getText());
+        to.setUrlIcon(domainWeather.getIconUrl());
         return to;
     }
 
     @Override
-    public Weather convertFrom(DetailedWeatherUIModel detailedWeatherUIModel) {
+    public DomainWeather convertFrom(DetailedWeather detailedWeather) {
         return null;
     }
 }

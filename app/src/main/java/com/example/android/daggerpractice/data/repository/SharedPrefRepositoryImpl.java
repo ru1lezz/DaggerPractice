@@ -3,7 +3,7 @@ package com.example.android.daggerpractice.data.repository;
 import android.content.Context;
 
 import com.example.android.daggerpractice.data.DomainSharedPrefConverter;
-import com.example.android.daggerpractice.domain.model.SharedPref;
+import com.example.android.daggerpractice.domain.model.DomainSharedPref;
 import com.example.android.daggerpractice.data.sharedpref.SharedPrefDataStorage;
 import com.example.android.daggerpractice.domain.SharedPrefRepository;
 
@@ -20,12 +20,12 @@ public class SharedPrefRepositoryImpl implements SharedPrefRepository {
     }
 
     @Override
-    public SharedPref getSharedPref() {
+    public DomainSharedPref getSharedPref() {
         return new DomainSharedPrefConverter().convertTo(sharedPrefDataStorage.getPreferences());
     }
 
     @Override
-    public void setSharedPref(SharedPref sharedPref) {
-        sharedPrefDataStorage.setPreferences(new DomainSharedPrefConverter().convertFrom(sharedPref));
+    public void setSharedPref(DomainSharedPref domainSharedPref) {
+        sharedPrefDataStorage.setPreferences(new DomainSharedPrefConverter().convertFrom(domainSharedPref));
     }
 }

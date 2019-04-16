@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<mResources>
     <color name="colorPrimary">#03A9F4</color>
     <color name="colorPrimaryDark">#0288D1</color>
     <color name="colorAccent">#FFD740</color>
@@ -14,4 +14,4 @@
     <color name="detail_accent_label">#90A4AE</color>
 
     <color name="activated">#E0E0E0</color>
-</resources>
+</mResources>

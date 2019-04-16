@@ -1,16 +1,16 @@
 package com.example.android.daggerpractice.domain.interactor;
 
 import com.example.android.daggerpractice.domain.SharedPrefRepository;
-import com.example.android.daggerpractice.domain.model.SharedPref;
+import com.example.android.daggerpractice.domain.model.DomainSharedPref;
 
 public class SetSharedPrefInteractor {
     private final SharedPrefRepository repository;
-    private final SharedPref sharedPref;
+    private final DomainSharedPref domainSharedPref;
 
-    public SetSharedPrefInteractor(SharedPrefRepository repository, SharedPref sharedPref) {
+    public SetSharedPrefInteractor(SharedPrefRepository repository, DomainSharedPref domainSharedPref) {
         this.repository = repository;
-        this.sharedPref = sharedPref;
+        this.domainSharedPref = domainSharedPref;
     }
 
-    public void execute() { repository.setSharedPref(sharedPref); }
+    public void execute() { repository.setSharedPref(domainSharedPref); }
 }

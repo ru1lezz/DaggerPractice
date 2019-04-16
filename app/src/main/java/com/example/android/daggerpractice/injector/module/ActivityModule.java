@@ -1,11 +1,11 @@
-package com.example.android.daggerpractice.presentation.injector.module;
+package com.example.android.daggerpractice.injector.module;
 
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
-import com.example.android.daggerpractice.presentation.injector.PerActivity;
+import com.example.android.daggerpractice.injector.PerActivity;
 
 import dagger.Module;
 import dagger.Provides;

@@ -1,13 +1,13 @@
 package com.example.android.daggerpractice.presentation.view.model.converter;
 
 import com.example.android.daggerpractice.domain.Converter;
-import com.example.android.daggerpractice.domain.model.Weather;
-import com.example.android.daggerpractice.presentation.view.model.WeatherUIModel;
+import com.example.android.daggerpractice.domain.model.DomainWeather;
+import com.example.android.daggerpractice.presentation.view.model.Weather;
 
-public class WeatherUIModelConverter extends Converter<Weather, WeatherUIModel> {
+public class WeatherUiModelConverter extends Converter<DomainWeather, Weather> {
     @Override
-    public WeatherUIModel convertTo(Weather from) {
-        WeatherUIModel to = new WeatherUIModel();
+    public Weather convertTo(DomainWeather from) {
+        Weather to = new Weather();
         to.setCity(from.getCity());
         to.setDate(from.getDate());
         to.setEpoch(from.getEpoch());
@@ -21,7 +21,7 @@ public class WeatherUIModelConverter extends Converter<Weather, WeatherUIModel> 
     }
 
     @Override
-    public Weather convertFrom(WeatherUIModel weatherUIModel) {
+    public DomainWeather convertFrom(Weather weather) {
         return null;
     }
 }

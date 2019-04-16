@@ -1,23 +1,24 @@
 package com.example.android.daggerpractice.presentation.view.model.converter;
 
 import com.example.android.daggerpractice.domain.Converter;
+import com.example.android.daggerpractice.domain.model.DomainSharedPref;
 import com.example.android.daggerpractice.presentation.view.model.SharedPref;
 
-public class DomainSharedPrefConverter extends Converter<SharedPref, com.example.android.daggerpractice.domain.model.SharedPref> {
+public class DomainSharedPrefConverter extends Converter<SharedPref, DomainSharedPref> {
 
     @Override
-    public com.example.android.daggerpractice.domain.model.SharedPref convertTo(SharedPref sharedPref) {
-        com.example.android.daggerpractice.domain.model.SharedPref to = new com.example.android.daggerpractice.domain.model.SharedPref();
+    public DomainSharedPref convertTo(SharedPref sharedPref) {
+        DomainSharedPref to = new DomainSharedPref();
         to.setDays(sharedPref.getDays());
         to.setCity(sharedPref.getCity());
         return to;
     }
 
     @Override
-    public SharedPref convertFrom(com.example.android.daggerpractice.domain.model.SharedPref sharedPref) {
+    public SharedPref convertFrom(DomainSharedPref domainSharedPref) {
         SharedPref from = new SharedPref();
-        from.setCity(sharedPref.getCity());
-        from.setDays(sharedPref.getDays());
+        from.setCity(domainSharedPref.getCity());
+        from.setDays(domainSharedPref.getDays());
         return from;
     }
 }

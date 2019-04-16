@@ -1,12 +1,12 @@
 package com.example.android.daggerpractice.data;
 
 import com.example.android.daggerpractice.domain.Converter;
-import com.example.android.daggerpractice.domain.model.Weather;
+import com.example.android.daggerpractice.domain.model.DomainWeather;
 
-public class DomainWeatherConverter extends Converter<WeatherDto, Weather> {
+public class DomainWeatherConverter extends Converter<WeatherDto, DomainWeather> {
     @Override
-    public Weather convertTo(WeatherDto from) {
-        Weather to = new Weather();
+    public DomainWeather convertTo(WeatherDto from) {
+        DomainWeather to = new DomainWeather();
         to.setCity(from.getCity());
         to.setEpoch(from.getEpoch());
         to.setDate(from.getDate());
@@ -20,17 +20,17 @@ public class DomainWeatherConverter extends Converter<WeatherDto, Weather> {
     }
 
     @Override
-    public WeatherDto convertFrom(Weather weather) {
+    public WeatherDto convertFrom(DomainWeather domainWeather) {
         WeatherDto from = new WeatherDto();
-        from.setCity(weather.getCity());
-        from.setAvgHumidity(weather.getAvgHumidity());
-        from.setDate(weather.getDate());
-        from.setEpoch(weather.getEpoch());
-        from.setIconUrl(weather.getIconUrl());
-        from.setMaxTemp(weather.getMaxTemp());
-        from.setMaxWind(weather.getMaxWind());
-        from.setMinTemp(weather.getMinTemp());
-        from.setText(weather.getText());
+        from.setCity(domainWeather.getCity());
+        from.setAvgHumidity(domainWeather.getAvgHumidity());
+        from.setDate(domainWeather.getDate());
+        from.setEpoch(domainWeather.getEpoch());
+        from.setIconUrl(domainWeather.getIconUrl());
+        from.setMaxTemp(domainWeather.getMaxTemp());
+        from.setMaxWind(domainWeather.getMaxWind());
+        from.setMinTemp(domainWeather.getMinTemp());
+        from.setText(domainWeather.getText());
         return from;
     }
 }

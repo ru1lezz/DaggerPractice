@@ -1,10 +1,10 @@
-package com.example.android.daggerpractice.presentation.injector.component;
+package com.example.android.daggerpractice.injector.component;
 
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.android.daggerpractice.domain.SharedPrefRepository;
 import com.example.android.daggerpractice.domain.WeatherRepository;
-import com.example.android.daggerpractice.presentation.injector.module.ApplicationModule;
+import com.example.android.daggerpractice.injector.module.ApplicationModule;
 
 import javax.inject.Singleton;
 

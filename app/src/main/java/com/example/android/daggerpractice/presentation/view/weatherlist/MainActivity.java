@@ -1,7 +1,5 @@
 package com.example.android.daggerpractice.presentation.view.weatherlist;
 
-import android.os.Handler;
-import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,19 +14,17 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.android.daggerpractice.R;
-import com.example.android.daggerpractice.data.repository.SharedPrefRepositoryImpl;
-import com.example.android.daggerpractice.data.repository.WeatherRepositoryImpl;
 import com.example.android.daggerpractice.presentation.WeatherApplication;
-import com.example.android.daggerpractice.presentation.injector.component.ApplicationComponent;
-import com.example.android.daggerpractice.presentation.injector.component.DaggerWeatherComponent;
-import com.example.android.daggerpractice.presentation.injector.module.ActivityModule;
-import com.example.android.daggerpractice.presentation.injector.module.SharefPrefModule;
-import com.example.android.daggerpractice.presentation.injector.module.WeatherModule;
+import com.example.android.daggerpractice.injector.component.ApplicationComponent;
+import com.example.android.daggerpractice.injector.component.DaggerWeatherComponent;
+import com.example.android.daggerpractice.injector.module.ActivityModule;
+import com.example.android.daggerpractice.injector.module.SharefPrefModule;
+import com.example.android.daggerpractice.injector.module.WeatherModule;
 import com.example.android.daggerpractice.presentation.presenter.weatherlist.WeatherListPresenter;
-import com.example.android.daggerpractice.presentation.view.model.WeatherUIModel;
+import com.example.android.daggerpractice.presentation.view.model.Weather;
+import com.example.android.daggerpractice.presentation.view.weatherlist.recycler.WeatherAdapter;
 
 import java.util.List;
-import java.util.concurrent.Executors;
 
 import javax.inject.Inject;
 
@@ -50,12 +46,6 @@ public class MainActivity extends AppCompatActivity implements MainView{
         initInjector(getApplicationComponent());
         initViews();
         initRecycler();
-//        mPresenter = new WeatherListPresenter(Executors.newSingleThreadExecutor(),
-//                new Handler(Looper.getMainLooper()),
-//                this,
-//                new WeatherRepositoryImpl(MainActivity.this),
-//                new SharedPrefRepositoryImpl(MainActivity.this),
-//                getResources());
         initListeners();
         initSpinner();
         mPresenter.setView(this);
@@ -71,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements MainView{
 
     private void initRecycler() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-        mAdapter = new WeatherAdapter(MainActivity.this);
+        mAdapter = new WeatherAdapter();
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -129,8 +119,8 @@ public class MainActivity extends AppCompatActivity implements MainView{
     }
 
     @Override
-    public void displayWeatherList(List<WeatherUIModel> weatherList) {
-        mAdapter.setmWeatherList(weatherList);
+    public void displayWeatherList(List<Weather> weatherList) {
+        mAdapter.setWeatherList(weatherList);
     }
 
     @Override

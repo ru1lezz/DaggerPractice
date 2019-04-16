@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Objects;
 
 @Entity
-public class Weather {
+public class RemoteWeather {
     @PrimaryKey
     @SerializedName("date_epoch")
     private long epoch;
@@ -47,10 +47,10 @@ public class Weather {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Weather weather = (Weather) o;
-        return epoch == weather.epoch &&
-                Objects.equals(date, weather.date) &&
-                Objects.equals(day, weather.day);
+        RemoteWeather remoteWeather = (RemoteWeather) o;
+        return epoch == remoteWeather.epoch &&
+                Objects.equals(date, remoteWeather.date) &&
+                Objects.equals(day, remoteWeather.day);
     }
 
     @Override
